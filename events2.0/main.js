@@ -10,7 +10,6 @@ varname.style.display="block"
 
 
 
-
 onload=function personPorg() {
     var fourNamesArray=[];
 
@@ -84,20 +83,57 @@ if(isEighteeen){
 
     fourNamesBtnId.addEventListener('click',saveName=>{
         
-
+var temp="";
             fourNamesArray.push(fourNamesId.value);
+            fourNamesId.value="";
+
             if(fourNamesArray.length==4){
 
                 for (let i = 0; i < fourNamesArray.length; i++) {
-                    ulListId.innerHTML+="<li id='list"+[i]+"'>"+fourNamesArray[i]+" "+lastNameId.value+"</li>";
-                  
-                    
+                    ulListId.innerHTML+="<li id='list"+i+"'>"+fourNamesArray[i]+" "+lastNameId.value+"</li>";
+
+              if(fourNamesArray[i][0]==lastNameId.value[0]){
+
+                document.getElementById("list"+i).style.color="red";
+
+
+              }
+
+               
                   }  
+
+
             }
 
 
+     
             
     })
+    creatElemnt("searchBtn","button","searchBtnId");
+    searchBtnId.innerText="search names";
+
+
+    searchBtnId.addEventListener('click',searchh=>{
+
+        creatElemnt("inputSearch","input","inputSearchId");
+        inputSearchId.type="search";
+
+        creatElemnt("searchOutPut","p","searchOutPutId");
+
+
+        for (let i = 0; i < fourNamesArray.length; i++) {
+            
+          if(fourNamesArray.includes(inputSearchId.value)) {
+              
+            searchOutPutId.innerText+=inputSearchId.value;
+          } 
+        }
+
+
+
+
+    })
+
 
 
 }
